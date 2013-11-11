@@ -1,4 +1,15 @@
 <%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_meggages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :name %><br />
